@@ -1,0 +1,61 @@
+---
+- name: hello world
+  hosts: localhost
+  tasks:
+    - name: display hello world
+      shell: echo "hello world"
+    - name: display hi
+      shell: echo hi
+- name: play 2 
+  hosts: localhost
+  tasks:
+    - name: echo
+      shell: echo "running play2"
+
+
+#    - include_vars : vars_sept.yaml
+#
+#    - name: display hello world
+#      shell: echo "hello world"
+#
+#    - name: display hi
+#      shell: 'echo {{ webserver}}'
+#
+#    - name: display hi
+#      shell: echo hi
+#
+#    - name: run date
+#      command: date
+#
+#    - name: list file contents
+#      command: cat resolv.conf
+#
+#    - args:
+#        chdir: /etc
+#
+#    - name:
+#      lineinfile:
+#        path: test.text
+#        line: 'server {{ ip_address}} '
+#
+#    - name: create user {{ item }}
+#      shell: echo 'name = {{ item }}'
+#      loop:
+#        - Abreham
+#        - ibt
+#        - dyan
+#        - apet
+#        - rizne
+#
+#    - name: installing "{{ item.name }}"
+#      shell: echo 'name = {{ item.name }}
+#      when:  item.required == true
+#      loop: '{{ software}}'
+#
+#    - name: run command if task1 is success
+#      command: exho "success"
+#      when: contents.stdout.find('hello world')!= -1
+#      ignore_errors: true
+#    - name: gather facts
+#      debug:
+#        var: ansible_facts
