@@ -1,9 +1,9 @@
-#ip_address : 434 3432
-#webserver: nade2
-#software:
-#  - name: python
-#    required: true
-#  - name: java
-#    required: true
-#  - name: ruby
-#    required: false
+ip_address: 178.23.4.54
+webserver: nade2
+software:
+  - name: python
+    required: true
+  - name: java
+    required: true
+  - name: ruby
+    required: false                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   

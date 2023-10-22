@@ -2,15 +2,55 @@
 - name: hello world
   hosts: localhost
   tasks:
+    - include_vars: vars_sept.yaml
     - name: display hello world
       shell: echo "hello world"
-    - name: display hi
-      shell: echo hi
+      register: contents
+      tags:
+        - nodes
+    - name: display hi   
+      shell: 'echo {{webserver}}'
+    - name: display how are you doing 
+      shell: echo how are you doing 
+    - name: I am doing good 
+      shell: echo I am doing good
 - name: play 2 
   hosts: localhost
   tasks:
     - name: echo
       shell: echo "running play2"
+      tags:
+        - nodes
+    - name: list file contents
+      command: cat resolv.conf
+      args:
+        chdir: /etc
+    - name: add server
+      lineinfile:
+        path: test.txt
+        line: 'server {{ip_address}}'
+
+    - name: create user '{{item}}'
+      shell: echo 'name = {{item}}'
+      loop :
+        - Abreham
+        - ibt
+        - dyan
+        - apet
+        - rizne
+    - name: installing "{{item.name}}"
+      shell: echo 'name = {{item.name}}'
+      when: item.required == true
+      loop: '{{software}}'
+    - name: run command if task1 is success
+      command: echo "success"
+      when: contents.stdout.find('hello world')!= -1
+      ignore_errors: true
+    - name: gather facts
+      debug:
+        var: ansible_facts
+
+    
 
 
 #    - include_vars : vars_sept.yaml
